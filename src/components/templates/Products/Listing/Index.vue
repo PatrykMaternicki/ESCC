@@ -19,6 +19,7 @@ const categories = computed(() => mainStore.categories);
   <OrganismsProdctsTop
     :categories="categories"
     @change-category="mainStore.findProductByCategory($event)"
+    @search="mainStore.findProductsByPhrase($event)"
   />
   <OrganismsProductsListing :products="products" />
 </template>
