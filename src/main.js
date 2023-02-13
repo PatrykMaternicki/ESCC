@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import "./style.css";
+import '@/assets/scss/index.scss';
 import { beforeMount } from "@/directives/bem.js";
 
 import App from "./App.vue";
