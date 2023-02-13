@@ -3,4 +3,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+
+  color: {
+    type: String,
+    default: undefined,
+  },
 };

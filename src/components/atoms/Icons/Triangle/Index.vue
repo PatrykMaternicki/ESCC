@@ -4,7 +4,10 @@ import "@/components/atoms/Icons/Triangle/style.scss";
 import { computed } from "vue";
 const _props = defineProps(props);
 const handleModifier = computed(() => (_props.rotate ? "rotate" : null));
+const setColor = computed(() => ({
+  borderTop: `4px solid ${_props.color ? `var(--${_props.color})` : null}`,
+}));
 </script>
 <template>
-  <div v-bem:atomsIconsTriangle="handleModifier"></div>
+  <div :style="setColor" v-bem:atomsIconsTriangle="handleModifier"></div>
 </template>

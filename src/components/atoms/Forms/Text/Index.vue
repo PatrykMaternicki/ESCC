@@ -1,7 +1,7 @@
 <script setup>
-import { props } from "@/components/atoms/Forms/Text/props.js";
+import { props } from "@/components/atoms/Forms/props.js";
 import "@/components/atoms/Forms/Text/style.scss";
-import { reactive, defineEmits, computed, ref } from "vue";
+import { ref } from "vue";
 
 const _props = defineProps(props);
 const model = ref("");

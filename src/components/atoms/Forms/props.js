@@ -3,6 +3,7 @@ export const props = {
     type: String,
     default: "",
   },
+
   value: {
     type: String,
     default: "",
