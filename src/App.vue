@@ -4,6 +4,9 @@ import AtomsButtons from "@/components/atoms/Button/Index.vue";
 import AtomsIconsTriangle from "@/components/atoms/icons/Triangle/Index.vue";
 import AtomsFormsText from "@/components/atoms/Forms/Text/Index.vue";
 import AtomsFormsSelect from "@/components/atoms/Forms/Select/Index.vue";
+import MoleculesCardsWithImage from "@/components/molecules/Cards/WithImage/Index.vue";
+import AtomsIconsStar from "@/components/atoms/Icons/Star/Index.vue";
+
 import { reactive, ref } from "vue";
 
 const states = reactive({
@@ -59,6 +62,17 @@ const searchCategory = ref("");
       placeholder="Select Category"
       :options="states.categories"
     />
+    <molecules-cards-with-image
+      title="test"
+      content="okkok kokkok kokkoko kokokok kokok okokok kkkk k k k kook"
+      source="https://placehold.it/640x220"
+    >
+      <template #bottom>
+        <p class="price">$ 489.42</p>
+        <p class="price__underline">$ 200.30</p>
+        <AtomsIconsStar modifier="empty" />
+      </template>
+    </molecules-cards-with-image>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
@@ -68,3 +82,16 @@ const searchCategory = ref("");
   </div>
   <HelloWorld msg="Vite + Vue" />
 </template>
+<style lang="scss">
+.price {
+  font: normal normal bold 20px/27px Open Sans;
+  color: var(--primary);
+  margin: 0;
+}
+
+.price__underline {
+  margin: 0;
+  text-decoration: line-through;
+  font: normal normal bold 14px/19px Open Sans;
+}
+</style>

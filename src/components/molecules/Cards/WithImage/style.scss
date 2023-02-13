@@ -1,0 +1,17 @@
+.moleculesCardsWithImage {
+  border: 1px solid var(--secondary);
+  border-radius: 6px;
+
+  &__title {
+    font: normal normal bold 20px/26px Roboto;
+  }
+
+  &__content {
+    font: normal normal normal 16px/22px Open Sans;
+    color: var(--secondary);
+  }
+
+  &__container {
+    padding: 17px 15px 23px 17px;
+  }
+}

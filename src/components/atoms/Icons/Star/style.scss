@@ -1,0 +1,34 @@
+.atomsIconsStar {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: var(--white);
+  overflow: hidden;
+
+  &__empty {
+    &:before {
+      content: "\2605";
+      font-size: 20px;
+      -webkit-text-stroke: 1px var(--primary);
+    }
+  }
+
+  &__full {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--primary);
+
+    @-moz-document url-prefix() {
+      color: var(--primary);
+    }
+
+    &:before {
+      content: "\2605";
+      font-size: 20px;
+      -webkit-text-stroke: 1px var(--primary);
+    }
+  }
+}
