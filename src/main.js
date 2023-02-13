@@ -2,14 +2,15 @@ import { createApp } from "vue";
 import "@/assets/scss/index.scss";
 import { beforeMount, updated } from "@/directives/bem.js";
 import { clickOutside } from "@/directives/clickOutside.js";
+import { createPinia } from "pinia";
 
 import App from "./App.vue";
 
-const app = createApp(App);
-app.directive("bem", {
-  beforeMount,
-  updated,
-});
-
-app.directive("click-outside", clickOutside);
-app.mount("#app");
+createApp(App)
+  .use(createPinia())
+  .directive("bem", {
+    beforeMount,
+    updated,
+  })
+  .directive("click-outside", clickOutside)
+  .mount("#app");

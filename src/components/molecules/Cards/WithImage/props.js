@@ -11,4 +11,16 @@ export const props = {
     type: String,
     default: undefined,
   },
+  price: {
+    type: String,
+    default: undefined,
+  },
+  discountPercentage: {
+    type: Number,
+    default: undefined,
+  },
+  rating: {
+    type: Number,
+    default: undefined,
+  },
 };

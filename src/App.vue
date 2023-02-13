@@ -6,6 +6,7 @@ import AtomsFormsText from "@/components/atoms/Forms/Text/Index.vue";
 import AtomsFormsSelect from "@/components/atoms/Forms/Select/Index.vue";
 import MoleculesCardsWithImage from "@/components/molecules/Cards/WithImage/Index.vue";
 import AtomsIconsStar from "@/components/atoms/Icons/Star/Index.vue";
+import TemplatesProductsListing from "@/components/templates/Products/Listing/Index.vue";
 
 import { reactive, ref } from "vue";
 
@@ -39,8 +40,8 @@ const searchCategory = ref("");
 </script>
 
 <template>
-  <div>
-    <AtomsButtons
+  <TemplatesProductsListing />
+  <!-- <AtomsButtons
       @clicked="states.sortClicked = $event"
       :active="states.sortClicked"
     >
@@ -80,18 +81,6 @@ const searchCategory = ref("");
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue" /> -->
 </template>
-<style lang="scss">
-.price {
-  font: normal normal bold 20px/27px Open Sans;
-  color: var(--primary);
-  margin: 0;
-}
-
-.price__underline {
-  margin: 0;
-  text-decoration: line-through;
-  font: normal normal bold 14px/19px Open Sans;
-}
-</style>
+<style lang="scss"></style>

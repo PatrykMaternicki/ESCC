@@ -9,7 +9,7 @@ const _props = defineProps(props);
     <div
       v-show="modifier === 'full'"
       v-bem:atomsIconsStar__full
-      :style="{ width: _props.width }"
+      :style="{ width: `${width}` }"
     ></div>
   </div>
 </template>

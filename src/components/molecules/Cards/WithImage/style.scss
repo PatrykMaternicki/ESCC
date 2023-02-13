@@ -14,4 +14,16 @@
   &__container {
     padding: 17px 15px 23px 17px;
   }
+
+  &__price {
+    font: normal normal bold 20px/27px Open Sans;
+    color: var(--primary);
+    margin: 0;
+  }
+
+  &__priceUnderline {
+    margin: 0;
+    text-decoration: line-through;
+    font: normal normal bold 14px/19px Open Sans;
+  }
 }
