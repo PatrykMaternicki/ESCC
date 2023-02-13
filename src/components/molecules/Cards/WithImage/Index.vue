@@ -12,6 +12,8 @@ const calculateDiscount = computed(() =>
   )
 );
 
+const trancated = computed((() => _props.content.substring(0, 40).concat('...')))
+
 const _props = defineProps(props);
 </script>
 <template>
@@ -19,13 +21,18 @@ const _props = defineProps(props);
     <AtomsImage :source="source" />
     <div v-bem:moleculesCardsWithImage__container>
       <h2 v-bem:moleculesCardsWithImage__title v-if="title">{{ title }}</h2>
-      <p v-bem:moleculesCardsWithImage__content v-if="content">{{ content }}</p>
+      <p v-bem:moleculesCardsWithImage__content v-if="content">{{ trancated  }}</p>
+      <div v-bem:moleculesCardsWithImage__bottomContainer>
+      <div>
       <p v-bem:moleculesCardsWithImage__price v-if="price">
         $ {{ calculateDiscount }}
       </p>
       <p v-bem:moleculesCardsWithImage__priceUnderline>$ {{ price }}</p>
-      <template :key="i" v-for="i in 5">
+      </div>
+      <div>
         <AtomsIconsStar
+          :key="i"
+          v-for="i in 5"
           :modifier="Math.ceil(rating) >= i ? 'full' : 'empty'"
           :width="
             rating < i
@@ -33,7 +40,8 @@ const _props = defineProps(props);
               : null
           "
         />
-      </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>

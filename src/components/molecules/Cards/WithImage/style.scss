@@ -8,11 +8,19 @@
 
   &__content {
     font: normal normal normal 16px/22px Open Sans;
+    height: 44px;
+    text-overflow: ellipsis;
     color: var(--secondary);
   }
 
   &__container {
     padding: 17px 15px 23px 17px;
+  }
+
+  &__bottomContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
   }
 
   &__price {
