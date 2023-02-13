@@ -18,7 +18,7 @@ const getCategories = computed(() =>
 const handleClick = (option) => {
   model.value = option;
   active.value = false;
-  emits(`update:${_props.value}`, model.value);
+  emits(`change-${_props.value}`, model.value);
 };
 </script>
 <template>

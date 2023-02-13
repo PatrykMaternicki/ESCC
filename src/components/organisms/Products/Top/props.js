@@ -1,6 +1,6 @@
 export const props = {
-  options: {
+  categories: {
     type: Array,
-    default: [],
+    default: () => [],
   },
 };
