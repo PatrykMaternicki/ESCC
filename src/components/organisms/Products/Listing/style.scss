@@ -1,0 +1,15 @@
+.organismsProductsListing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0 20px;
+
+  @include mq("sm") {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mq("lg") {
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 44px;
+  }
+}

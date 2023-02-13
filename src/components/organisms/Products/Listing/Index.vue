@@ -1,12 +1,14 @@
 <script setup>
 import { props } from "@/components/organisms/Products/Listing/props.js";
+import "@/components/organisms/Products/Listing/style.scss";
 import MoleculesCardsWithImage from "@/components/molecules/Cards/WithImage/Index.vue";
 defineProps(props);
 </script>
 
 <template>
-  <div v-bem:OrganismsProductsListing>
+  <div v-bem:organismsProductsListing>
     <MoleculesCardsWithImage
+      v-for="item in products"
       :key="item.id"
       :content="item.description"
       :source="item.thumbnail"
@@ -14,8 +16,6 @@ defineProps(props);
       :price="item.price"
       :discount-percentage="item.discountPercentage"
       :rating="item.rating"
-      v-for="item in products"
-    >
-    </MoleculesCardsWithImage>
+    />
   </div>
 </template>
