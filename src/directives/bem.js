@@ -1,15 +1,19 @@
-export const beforeMount = (el, binding) => {
+const func = (el, binding) => {
   const { arg, value } = binding;
-  el.classList.add(!value ? `${arg}` : `${arg}--${value}`);
+  const addClass = (className) => el.classList.add(className);
+  if (!value) {
+    addClass(arg);
+  } else {
+    addClass(arg);
+    addClass(`${arg}--${value}`);
+  }
 };
 
-// const baseClass = `${this.blockClassName}__${childrenName}`;
+export const beforeMount = (el, binding) => {
+  func(el, binding);
+};
 
-// if (!Array.isArray(modifiers)) {
-//   return `${baseClass} ${baseClass}--${modifiers}`;
-// }
-
-// return modifiers.length === 0
-//   ? `${baseClass}`
-//   : `${baseClass} ${modifiers.map((modifier) => `${baseClass}--${modifier}`).join(' ')}`;
-// },
+export const updated = (el, binding) => {
+  el.className = "";
+  func(el, binding);
+};

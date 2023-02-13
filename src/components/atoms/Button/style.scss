@@ -1,0 +1,15 @@
+.atomsButton {
+  background: var(--secondary-100) 0% 0% no-repeat padding-box;
+  transition: background 0.5s;
+  padding: 4px 14px;
+  gap: 8px;
+  border-radius: 6px;
+  border: inherit;
+  display: flex;
+  align-items: center;
+
+  &--active {
+    background: var(--primary) 0% 0% no-repeat padding-box;
+    color: var(--white);
+  }
+}
