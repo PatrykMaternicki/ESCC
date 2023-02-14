@@ -62,6 +62,7 @@ const doRating = () => {
 
 <template>
   <div v-bem:organismsProductsTop>
+    <h1 v-bem:organismsProductsTop__title>Frontend Challenge </h1>
     <div v-bem:organismsProductsTop__inputWrapper>
       <div v-bem:organismsProductsTop__searchWrapper>
         <AtomsFormsText

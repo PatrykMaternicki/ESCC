@@ -8,6 +8,13 @@
     }
   }
 
+  &__title {
+    font: normal normal bold 20px/27px Open Sans;
+    color: var(--secondary);
+    margin-top: 52px;
+    margin-bottom: 41px;
+  }
+
   &__buttonsWrapper {
     width: 80px;
     margin-right: 10px;
