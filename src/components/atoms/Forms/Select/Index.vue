@@ -24,20 +24,20 @@ const handleClick = (option) => {
 };
 </script>
 <template>
-  <div v-bem:atomsFormsSelect v-click-outside="handleClickOutside">
-    <label :for="value" v-bem:atomsFormsSelect__label>
+  <div class="atomsFormsSelect" v-click-outside="handleClickOutside">
+    <label :for="value" class="atomsFormsSelect__label">
       {{ label }}
     </label>
-    <div v-bem:atomsFormsSelect__wrapper>
+    <div class="atomsFormsSelect__wrapper">
       <input
         :id="value"
         type="text"
         v-model="model"
         :placeholder="placeholder"
-        v-bem:atomsFormsSelect__input
+        class="atomsFormsSelect__input"
         @click="active = true"
       />
-      <div v-bem:atomsFormsSelect__triangleWrapper>
+      <div class="atomsFormsSelect__triangleWrapper">
         <AtomsIconsTriangle
           :rotate="active"
           :color="active ? 'primary' : 'secondary'"
@@ -46,12 +46,12 @@ const handleClick = (option) => {
     </div>
     <ul
       v-if="getCategories.length > 0 && active"
-      v-bem:atomsFormsSelect__options
+      class="atomsFormsSelect__options"
     >
       <li
         :key="index"
         v-for="(option, index) in getCategories"
-        v-bem:atomsFormsSelect__item
+        class="atomsFormsSelect__item"
         @click="handleClick(option)"
       >
         {{ option }}

@@ -7,8 +7,8 @@ const _props = defineProps(props);
 const model = ref("");
 </script>
 <template>
-  <div v-bem:atomsFormsText>
-    <label :for="value" v-bem:atomsFormsText__label>
+  <div class="atomsFormsText">
+    <label :for="value" class="atomsFormsText__label">
       {{ label }}
     </label>
     <input
@@ -16,7 +16,7 @@ const model = ref("");
       type="text"
       v-model="model"
       :placeholder="placeholder"
-      v-bem:atomsFormsText__input
+      class="atomsFormsText__input"
       @input="$emit(`update:${value}`, $event.target.value)"
     />
   </div>
