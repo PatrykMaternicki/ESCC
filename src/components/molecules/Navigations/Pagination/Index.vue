@@ -2,7 +2,6 @@
 import "@/components/molecules/Navigations/Pagination/style.scss";
 import { props } from "@/components/molecules/Navigations/Pagination/props.js";
 import AtomsButtons from "@/components/atoms/Button/Index.vue";
-import { computed } from "vue";
 
 const _props = defineProps(props);
 
@@ -15,7 +14,7 @@ const startPage = () => {
     return _props.pages - 5 + 1;
   }
 
-  return _props.currentPage - 1;
+  return _props.currentPage === 1 ? _props.currentPage : _props.currentPage - 1;
 };
 
 const endPage = () => {
@@ -39,6 +38,7 @@ const pages = () => {
         text="<"
         type="outline"
         :rounded="true"
+        :force-active="false"
         @click="$emit('previous-page')"
       />
     </div>
@@ -60,6 +60,7 @@ const pages = () => {
         type="outline"
         text=">"
         :rounded="true"
+        :force-active="false"
         @click="$emit('next-page')"
       />
     </div>

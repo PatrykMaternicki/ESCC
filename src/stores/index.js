@@ -98,6 +98,7 @@ export const useMainStore = defineStore("", {
 
     changeLimit(limit) {
       this.limit = limit;
+      this.currentPage = 0;
       this.findProductsByPhrase();
     },
 
