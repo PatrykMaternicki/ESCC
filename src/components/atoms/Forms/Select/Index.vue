@@ -9,11 +9,13 @@ import { ref, defineEmits, computed } from "vue";
 const _props = defineProps(Object.assign(props, additionalProps));
 
 const emits = defineEmits(["changed"]);
-const model = ref("");
+const model = ref(_props.defaultValue);
 const active = ref(false);
 const handleClickOutside = () => (active.value = false);
 const getCategories = computed(() =>
-  _props.options.filter((option) => option.includes(model.value))
+  _props.filterable
+    ? _props.options.filter((option) => option.includes(model.value))
+    : _props.options
 );
 const handleClick = (option) => {
   model.value = option;

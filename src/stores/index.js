@@ -13,30 +13,40 @@ export const useMainStore = defineStore("", {
     resData: {},
     categories: [],
     sortBy: undefined,
+    limit: 10,
+    phrase: "",
   }),
 
   getters: {
     products: (state) => {
-      console.log(state.sortBy);
       return state.sortBy
         ? sortBy(state.sortBy, [...state.resData.products])
         : state.resData.products;
     },
+    total: (state) => state.resData.total,
     _categories: (state) => state.categories,
   },
 
   actions: {
-    async findProductsByPhrase(phrase) {
-      const query = phrase ? `/search?q=${phrase}` : "";
+    async findProductsByPhrase() {
+      const query =
+        this.phrase.length > 0
+          ? `/search?q=${this.phrase}&limit=${this.limit}`
+          : `?limit=${this.limit}`;
       const response = await fetch(`https://dummyjson.com/products${query}`);
       this.resData = await response.json();
     },
 
     async findProductByCategory(category) {
       const response = await fetch(
-        `https://dummyjson.com/products/category/${category}`
+        `https://dummyjson.com/products/category/${category}?limit=${this.limit}`
       );
       this.resData = await response.json();
+    },
+
+    setPhrase(phrase) {
+      this.phrase = phrase;
+      this.findProductsByPhrase();
     },
 
     resetSort() {
@@ -45,6 +55,11 @@ export const useMainStore = defineStore("", {
 
     sortProductBy(sortObj) {
       this.sortBy = sortObj;
+    },
+
+    changeLimit(limit) {
+      this.limit = limit;
+      this.findProductsByPhrase();
     },
 
     async getCategories() {

@@ -83,46 +83,65 @@ const doRating = () => {
       </div>
     </div>
     <hr v-bem:organismsProductsTop__line />
-    <div v-bem:organismsProductsTop__buttonsWrapper>
-      <AtomsButtons
-        @clicked="doPrice"
-        :force-active="states.counts.price <= 2 && states.counts.price !== 0"
-        text="price"
-      >
-        <div
-          v-bem:organismsProductsTop__triangleWrapper="showTriangle('price')"
-        >
-          <AtomsIconsTriangle :rotate="rotateTriangle('price')" />
+    <div v-bem:organismsProductsTop__buttonContainer>
+      <div>
+        <div v-bem:organismsProductsTop__buttonsWrapper>
+          <AtomsButtons
+            @clicked="doPrice"
+            :force-active="
+              states.counts.price <= 2 && states.counts.price !== 0
+            "
+            text="price"
+          >
+            <div
+              v-bem:organismsProductsTop__triangleWrapper="
+                showTriangle('price')
+              "
+            >
+              <AtomsIconsTriangle :rotate="rotateTriangle('price')" />
+            </div>
+          </AtomsButtons>
         </div>
-      </AtomsButtons>
-    </div>
 
-    <div v-bem:organismsProductsTop__buttonsWrapper>
-      <AtomsButtons
-        @clicked="doStock"
-        :force-active="states.counts.stock <= 2 && states.counts.stock !== 0"
-        text="stock"
-      >
-        <div
-          v-bem:organismsProductsTop__triangleWrapper="showTriangle('stock')"
-        >
-          <AtomsIconsTriangle :rotate="rotateTriangle('stock')" />
+        <div v-bem:organismsProductsTop__buttonsWrapper>
+          <AtomsButtons
+            @clicked="doStock"
+            :force-active="
+              states.counts.stock <= 2 && states.counts.stock !== 0
+            "
+            text="stock"
+          >
+            <div
+              v-bem:organismsProductsTop__triangleWrapper="
+                showTriangle('stock')
+              "
+            >
+              <AtomsIconsTriangle :rotate="rotateTriangle('stock')" />
+            </div>
+          </AtomsButtons>
         </div>
-      </AtomsButtons>
-    </div>
 
-    <div v-bem:organismsProductsTop__buttonsWrapper>
-      <AtomsButtons
-        @clicked="doRating"
-        :force-active="states.counts.rating <= 2 && states.counts.rating !== 0"
-        text="rating"
-      >
-        <div
-          v-bem:organismsProductsTop__triangleWrapper="showTriangle('rating')"
-        >
-          <AtomsIconsTriangle :rotate="rotateTriangle('rating')" />
+        <div v-bem:organismsProductsTop__buttonsWrapper>
+          <AtomsButtons
+            @clicked="doRating"
+            :force-active="
+              states.counts.rating <= 2 && states.counts.rating !== 0
+            "
+            text="rating"
+          >
+            <div
+              v-bem:organismsProductsTop__triangleWrapper="
+                showTriangle('rating')
+              "
+            >
+              <AtomsIconsTriangle :rotate="rotateTriangle('rating')" />
+            </div>
+          </AtomsButtons>
         </div>
-      </AtomsButtons>
+      </div>
+      <div>
+        <p v-bem:organismsProductsTop__total>{{ limit }} of {{ total }}</p>
+      </div>
     </div>
   </div>
 </template>

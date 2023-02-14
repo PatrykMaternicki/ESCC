@@ -3,4 +3,13 @@ export const props = {
     type: Array,
     default: [],
   },
+  defaultValue: {
+    type: String,
+    default: "",
+  },
+
+  filterable: {
+    type: Boolean,
+    default: true,
+  },
 };
