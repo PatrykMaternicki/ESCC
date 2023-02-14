@@ -9,19 +9,12 @@ const sortBy = (sortObj, data) => {
   return sorters[sortObj.value === 1 ? "asc" : "desc"](data);
 };
 
-const pagination = (page, limit, array) =>
-  array.slice((page - 1) * limit, page * limit);
-
 export const useMainStore = defineStore("", {
   state: () => ({
     categories: [],
     sortBy: undefined,
-    limit: 10,
-    displayLimit: 0,
-    currentPage: 0,
     phrase: "",
     items: [],
-    _total: 0,
   }),
 
   getters: {
@@ -30,7 +23,6 @@ export const useMainStore = defineStore("", {
         ? sortBy(state.sortBy, [...state.items])
         : state.items;
     },
-    pages: (state) => (state._total ? Math.ceil(state.total / state.limit) : 0),
     _categories: (state) => state.categories,
   },
 
@@ -44,7 +36,8 @@ export const useMainStore = defineStore("", {
       const response = await fetch(
         `https://dummyjson.com/products${query}&skip=${
           paginationStore.currentPage * paginationStore.limit
-        }`
+        }`,
+        { mode: "cors" }
       );
       const json = await response.json();
       this.items = json.products;
@@ -56,7 +49,8 @@ export const useMainStore = defineStore("", {
       const paginationStore = usePaginationStore();
       if (category) {
         const response = await fetch(
-          `https://dummyjson.com/products/category/${category}?limit=${paginationStore.limit}`
+          `https://dummyjson.com/products/category/${category}?limit=${paginationStore.limit}`,
+          { mode: "cors" }
         );
         const json = await response.json();
         this.items = json.products;
@@ -70,24 +64,6 @@ export const useMainStore = defineStore("", {
       this.findProductsByPhrase();
     },
 
-    previousPage() {
-      if (this.currentPage >= 0) {
-        this.currentPage = 0;
-      } else {
-        this.currentPage--;
-      }
-      this.findProductsByPhrase();
-    },
-
-    nextPage() {
-      if (this.currentPage + 1 >= Math.ceil(this.total / this.limit)) {
-        this.currentPage = 0;
-      } else {
-        this.currentPage++;
-      }
-      this.findProductsByPhrase();
-    },
-
     resetSort() {
       this.sortBy = undefined;
     },
@@ -96,19 +72,11 @@ export const useMainStore = defineStore("", {
       this.sortBy = sortObj;
     },
 
-    changePage(page) {
-      this.currentPage = page;
-      this.findProductsByPhrase();
-    },
-
-    changeLimit(limit) {
-      this.limit = limit;
-      this.currentPage = 0;
-      this.findProductsByPhrase();
-    },
-
     async getCategories() {
-      const response = await fetch("https://dummyjson.com/products/categories");
+      const response = await fetch(
+        "https://dummyjson.com/products/categories",
+        { mode: "cors" }
+      );
       this.categories = await response.json();
     },
   },

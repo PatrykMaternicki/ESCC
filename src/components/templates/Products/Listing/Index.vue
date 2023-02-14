@@ -15,17 +15,13 @@ onMounted(async () => {
   await mainStore.getCategories();
 });
 
-const resData = computed(() => mainStore.resData);
-const products = computed(() => mainStore.products);
-const categories = computed(() => mainStore.categories);
-
+const { products, categories } = storeToRefs(mainStore);
 const { limit, displayLimit, currentPage, total, pages } =
   storeToRefs(paginationStore);
 </script>
 
 <template>
   <div class="templatesProductsListing">
-    {{ pagination }}
     <OrganismsProdctsTop
       :categories="categories"
       :total="total"

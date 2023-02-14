@@ -9,9 +9,13 @@ export const usePaginationStore = defineStore("pagination", {
     total: 0,
   }),
 
+  getters: {
+    pages: (state) => (state.total ? Math.ceil(state.total / state.limit) : 0),
+  },
+
   actions: {
     previousPage() {
-      const mainStore = useMainStore()
+      const mainStore = useMainStore();
       if (this.currentPage >= 0) {
         this.currentPage = 0;
       } else {
@@ -21,7 +25,7 @@ export const usePaginationStore = defineStore("pagination", {
     },
 
     nextPage() {
-      const mainStore = useMainStore()
+      const mainStore = useMainStore();
       if (this.currentPage + 1 >= Math.ceil(this.total / this.limit)) {
         this.currentPage = 0;
       } else {
@@ -31,13 +35,13 @@ export const usePaginationStore = defineStore("pagination", {
     },
 
     changePage(page) {
-      const mainStore = useMainStore()
+      const mainStore = useMainStore();
       this.currentPage = page;
       mainStore.findProductsByPhrase();
     },
 
     changeLimit(limit) {
-      const mainStore = useMainStore()
+      const mainStore = useMainStore();
       this.limit = limit;
       this.currentPage = 0;
       mainStore.findProductsByPhrase();
