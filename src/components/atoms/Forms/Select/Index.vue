@@ -11,7 +11,10 @@ const _props = defineProps(Object.assign(props, additionalProps));
 const emits = defineEmits(["changed"]);
 const model = ref(_props.defaultValue);
 const active = ref(false);
-const handleClickOutside = () => (active.value = false);
+const handleClickOutside = () => {
+  active.value = false
+  emits(`change-${_props.value}`, model.value);
+};
 const getCategories = computed(() =>
   _props.filterable
     ? _props.options.filter((option) => option.includes(model.value))

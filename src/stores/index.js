@@ -50,12 +50,14 @@ export const useMainStore = defineStore("", {
     },
 
     async findProductByCategory(category) {
-      const response = await fetch(
-        `https://dummyjson.com/products/category/${category}?limit=${this.limit}`
-      );
-      const json = await response.json();
-      this.items = json.products;
-      this._total = json.total;
+      if(category) {
+        const response = await fetch(
+          `https://dummyjson.com/products/category/${category}?limit=${this.limit}`
+        );
+        const json = await response.json();
+        this.items = json.products;
+        this._total = json.total;
+      }
     },
 
     setPhrase(phrase) {
