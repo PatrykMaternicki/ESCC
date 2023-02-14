@@ -16,6 +16,8 @@ const products = computed(() => mainStore.products);
 const categories = computed(() => mainStore.categories);
 const total = computed(() => mainStore.total);
 const limit = computed(() => mainStore.limit);
+const pages = computed(() => mainStore.pages);
+const currentPage = computed(() => mainStore.currentPage);
 </script>
 
 <template>
@@ -29,5 +31,12 @@ const limit = computed(() => mainStore.limit);
     @reset-sort="mainStore.resetSort()"
   />
   <OrganismsProductsListing :products="products" />
-  <OrganismsProductsBottom @change-limit="mainStore.changeLimit($event)" />
+  <OrganismsProductsBottom
+    @change-limit="mainStore.changeLimit($event)"
+    @change-page="mainStore.changePage($event)"
+    @previous-page="mainStore.previousPage()"
+    @next-page="mainStore.nextPage()"
+    :pages="pages"
+    :current-page="currentPage"
+  />
 </template>

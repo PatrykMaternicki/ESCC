@@ -18,10 +18,21 @@ const handleClick = () => {
   states.active = _props.forceActive ? _props.forceActive : !states.active;
   emit("clicked", states.active);
 };
-const handleModifier = computed(() => (states.active ? "active" : null));
+const handleModifier = computed(() =>
+  states.active ? "atomsButton--active" : null
+);
+const handleType = computed(() =>
+  _props.type ? `atomsButton--${_props.type}` : null
+);
+const handleRounded = computed(() =>
+  _props.rounded ? `atomsButton--rounded` : null
+);
 </script>
 <template>
-  <button @click="handleClick" v-bem:atomsButton="handleModifier">
+  <button
+    @click="handleClick"
+    :class="['atomsButton', handleModifier, handleType, handleRounded]"
+  >
     {{ text }}
     <slot />
   </button>
