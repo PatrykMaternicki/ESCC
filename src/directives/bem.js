@@ -9,11 +9,12 @@ const func = (el, binding) => {
   }
 };
 
-export const beforeMount = (el, binding) => {
-  func(el, binding);
-};
-
-export const updated = (el, binding) => {
-  el.className = "";
-  func(el, binding);
+export const bem = {
+  updated: (el, binding) => {
+    el.className = "";
+    func(el, binding);
+  },
+  beforeMount: (el, binding) => {
+    func(el, binding);
+  },
 };

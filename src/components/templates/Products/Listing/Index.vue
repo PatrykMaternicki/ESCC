@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted } from "vue";
 import { useMainStore } from "@/stores";
+import "@/components/templates/Products/Listing/style.scss";
 import OrganismsProductsListing from "@/components/organisms/Products/Listing/Index.vue";
 import OrganismsProdctsTop from "@/components/organisms/Products/Top/Index.vue";
 import OrganismsProductsBottom from "@/components/organisms/Products/Bottom/Index.vue";
@@ -21,22 +22,24 @@ const currentPage = computed(() => mainStore.currentPage);
 </script>
 
 <template>
-  <OrganismsProdctsTop
-    :categories="categories"
-    :total="total"
-    :limit="limit"
-    @change-category="mainStore.findProductByCategory($event)"
-    @search="mainStore.setPhrase($event)"
-    @sort-by="mainStore.sortProductBy($event)"
-    @reset-sort="mainStore.resetSort()"
-  />
-  <OrganismsProductsListing :products="products" />
-  <OrganismsProductsBottom
-    @change-limit="mainStore.changeLimit($event)"
-    @change-page="mainStore.changePage($event)"
-    @previous-page="mainStore.previousPage()"
-    @next-page="mainStore.nextPage()"
-    :pages="pages"
-    :current-page="currentPage"
-  />
+  <div v-bem:templatesProductsListing>
+    <OrganismsProdctsTop
+      :categories="categories"
+      :total="total"
+      :limit="limit"
+      @change-category="mainStore.findProductByCategory($event)"
+      @search="mainStore.setPhrase($event)"
+      @sort-by="mainStore.sortProductBy($event)"
+      @reset-sort="mainStore.resetSort()"
+    />
+    <OrganismsProductsListing :products="products" />
+    <OrganismsProductsBottom
+      @change-limit="mainStore.changeLimit($event)"
+      @change-page="mainStore.changePage($event)"
+      @previous-page="mainStore.previousPage()"
+      @next-page="mainStore.nextPage()"
+      :pages="pages"
+      :current-page="currentPage"
+    />
+  </div>
 </template>

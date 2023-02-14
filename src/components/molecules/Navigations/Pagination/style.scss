@@ -1,9 +1,21 @@
 .moleculesNavigationsPagination {
-  display: flex;
+  text-align: center;
+  margin-top: 20px;
+
+  @include mq("sm") {
+    margin: 0;
+  }
+
+  @include mq("lg") {
+    text-align: center;
+    display: inline-block;
+    width: calc(100% - 80px);
+  }
 
   &__button {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
     margin-right: 16px;
+    display: inline-block;
   }
 }

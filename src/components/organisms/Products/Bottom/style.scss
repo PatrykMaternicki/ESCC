@@ -3,7 +3,20 @@
   margin-left: 20px;
   margin-right: 20px;
 
+  @include mq("sm") {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include mq("lg") {
+    align-items: center;
+  }
+
   &__limitWrapper {
     width: 80px;
+
+    @include mq("lg") {
+      display: inline-block;
+    }
   }
 }
