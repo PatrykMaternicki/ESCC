@@ -1,0 +1,45 @@
+.organismsProductsTop {
+  margin: 0 20px;
+  &__triangleWrapper {
+    opacity: 0;
+
+    &--show {
+      opacity: 1;
+    }
+  }
+
+  &__buttonsWrapper {
+    width: 80px;
+    margin-bottom: 40px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  &__line {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+
+  &__categoryWrapper {
+    @include mq("sm") {
+      width: 30%;
+      display: inline-block;
+    }
+
+    @include mq("lg") {
+      width: 228px;
+    }
+  }
+
+  &__searchWrapper {
+    @include mq("sm") {
+      width: 44%;
+      margin-right: 30px;
+      display: inline-block;
+    }
+
+    @include mq("lg") {
+      width: 385px;
+    }
+  }
+}

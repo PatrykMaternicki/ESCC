@@ -8,4 +8,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+
+  forceActive: {
+    type: Boolean,
+    default: false,
+  },
 };

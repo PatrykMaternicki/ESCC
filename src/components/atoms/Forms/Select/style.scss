@@ -1,5 +1,6 @@
 .atomsFormsSelect {
   color: var(--secondary);
+  position: relative;
 
   &__label {
     font: normal normal 600 16px/22px Open Sans;
@@ -14,6 +15,9 @@
     border-left: 1px solid var(--secondary);
     border-right: 1px solid var(--secondary);
     border-bottom: 1px solid var(--secondary);
+    position: absolute;
+    background: var(--white);
+    min-width: 100%;
   }
 
   &__item {
