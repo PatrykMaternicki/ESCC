@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { usePaginationStore } from "@/stores/pagination";
 
 const sortBy = (sortObj, data) => {
   let sorters = {
@@ -29,37 +30,38 @@ export const useMainStore = defineStore("", {
         ? sortBy(state.sortBy, [...state.items])
         : state.items;
     },
-    total: (state) => state._total,
     pages: (state) => (state._total ? Math.ceil(state.total / state.limit) : 0),
     _categories: (state) => state.categories,
   },
 
   actions: {
     async findProductsByPhrase() {
+      const paginationStore = usePaginationStore();
       const query =
         this.phrase.length > 0
-          ? `/search?q=${this.phrase}&limit=${this.limit}`
-          : `?limit=${this.limit}`;
+          ? `/search?q=${this.phrase}&limit=${paginationStore.limit}`
+          : `?limit=${paginationStore.limit}`;
       const response = await fetch(
         `https://dummyjson.com/products${query}&skip=${
-          this.currentPage * this.limit
+          paginationStore.currentPage * paginationStore.limit
         }`
       );
       const json = await response.json();
       this.items = json.products;
-      this.displayLimit = json.limit;
-      this._total = json.total;
+      paginationStore.displayLimit = json.limit;
+      paginationStore.total = json.total;
     },
 
     async findProductByCategory(category) {
-      if(category) {
+      const paginationStore = usePaginationStore();
+      if (category) {
         const response = await fetch(
-          `https://dummyjson.com/products/category/${category}?limit=${this.limit}`
+          `https://dummyjson.com/products/category/${category}?limit=${paginationStore.limit}`
         );
         const json = await response.json();
         this.items = json.products;
-        this.displayLimit = json.limit;
-        this._total = json.total;
+        paginationStore.displayLimit = json.limit;
+        paginationStore.total = json.total;
       }
     },
 

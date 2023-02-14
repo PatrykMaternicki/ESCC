@@ -22,7 +22,9 @@ const increaseCount = (key) => states.counts[key]++;
 const resetCount = (key) => (states.counts[key] = 0);
 const isMoreThan2 = (key) => states.counts[key] > 2;
 const showTriangle = (key) =>
-  states.counts[key] <= 2 && states.counts[key] !== 0 ? "organismsProductsTop__triangleWrapper--show" : null;
+  states.counts[key] <= 2 && states.counts[key] !== 0
+    ? "organismsProductsTop__triangleWrapper--show"
+    : null;
 const rotateTriangle = (key) => states.counts[key] === 2;
 const emitSort = (key) => emit("sortBy", { key, value: states.counts[key] });
 
@@ -62,7 +64,7 @@ const doRating = () => {
 
 <template>
   <div class="organismsProductsTop">
-    <h1 class="organismsProductsTop__title">Frontend Challenge </h1>
+    <h1 class="organismsProductsTop__title">Frontend Challenge</h1>
     <div class="organismsProductsTop__inputWrapper">
       <div class="organismsProductsTop__searchWrapper">
         <AtomsFormsText
@@ -95,7 +97,10 @@ const doRating = () => {
             text="price"
           >
             <div
-            :class="['organismsProductsTop__triangleWrapper', showTriangle('price')]"
+              :class="[
+                'organismsProductsTop__triangleWrapper',
+                showTriangle('price'),
+              ]"
             >
               <AtomsIconsTriangle :rotate="rotateTriangle('price')" />
             </div>
@@ -111,7 +116,10 @@ const doRating = () => {
             text="stock"
           >
             <div
-              :class="['organismsProductsTop__triangleWrapper', showTriangle('stock')]"
+              :class="[
+                'organismsProductsTop__triangleWrapper',
+                showTriangle('stock'),
+              ]"
             >
               <AtomsIconsTriangle :rotate="rotateTriangle('stock')" />
             </div>
@@ -127,7 +135,10 @@ const doRating = () => {
             text="rating"
           >
             <div
-            :class="['organismsProductsTop__triangleWrapper', showTriangle('rating')]"
+              :class="[
+                'organismsProductsTop__triangleWrapper',
+                showTriangle('rating'),
+              ]"
             >
               <AtomsIconsTriangle :rotate="rotateTriangle('rating')" />
             </div>

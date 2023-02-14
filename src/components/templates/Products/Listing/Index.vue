@@ -1,12 +1,15 @@
 <script setup>
 import { computed, onMounted } from "vue";
 import { useMainStore } from "@/stores";
+import { usePaginationStore } from "@/stores/pagination";
 import "@/components/templates/Products/Listing/style.scss";
 import OrganismsProductsListing from "@/components/organisms/Products/Listing/Index.vue";
 import OrganismsProdctsTop from "@/components/organisms/Products/Top/Index.vue";
 import OrganismsProductsBottom from "@/components/organisms/Products/Bottom/Index.vue";
+import { storeToRefs } from "pinia";
 
 const mainStore = useMainStore();
+const paginationStore = usePaginationStore();
 onMounted(async () => {
   await mainStore.findProductsByPhrase();
   await mainStore.getCategories();
@@ -15,15 +18,14 @@ onMounted(async () => {
 const resData = computed(() => mainStore.resData);
 const products = computed(() => mainStore.products);
 const categories = computed(() => mainStore.categories);
-const total = computed(() => mainStore.total);
-const limit = computed(() => mainStore.limit);
-const displayLimit = computed(() => mainStore.displayLimit);
-const pages = computed(() => mainStore.pages);
-const currentPage = computed(() => mainStore.currentPage);
+
+const { limit, displayLimit, currentPage, total, pages } =
+  storeToRefs(paginationStore);
 </script>
 
 <template>
   <div class="templatesProductsListing">
+    {{ pagination }}
     <OrganismsProdctsTop
       :categories="categories"
       :total="total"
@@ -35,10 +37,10 @@ const currentPage = computed(() => mainStore.currentPage);
     />
     <OrganismsProductsListing :products="products" />
     <OrganismsProductsBottom
-      @change-limit="mainStore.changeLimit($event)"
-      @change-page="mainStore.changePage($event)"
-      @previous-page="mainStore.previousPage()"
-      @next-page="mainStore.nextPage()"
+      @change-limit="paginationStore.changeLimit($event)"
+      @change-page="paginationStore.changePage($event)"
+      @previous-page="paginationStore.previousPage()"
+      @next-page="paginationStore.nextPage()"
       :pages="pages"
       :current-page="currentPage"
     />
