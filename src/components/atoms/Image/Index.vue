@@ -5,5 +5,5 @@ import "@/components/atoms/Image/style.scss";
 const _props = defineProps(props);
 </script>
 <template>
-  <img v-bem:atomsImage :width="width" :height="height" :src="source" />
+  <img class="atomsImage" :width="width" :height="height" :src="source" />
 </template>

@@ -17,16 +17,17 @@ const products = computed(() => mainStore.products);
 const categories = computed(() => mainStore.categories);
 const total = computed(() => mainStore.total);
 const limit = computed(() => mainStore.limit);
+const displayLimit = computed(() => mainStore.displayLimit);
 const pages = computed(() => mainStore.pages);
 const currentPage = computed(() => mainStore.currentPage);
 </script>
 
 <template>
-  <div v-bem:templatesProductsListing>
+  <div class="templatesProductsListing">
     <OrganismsProdctsTop
       :categories="categories"
       :total="total"
-      :limit="limit"
+      :limit="displayLimit"
       @change-category="mainStore.findProductByCategory($event)"
       @search="mainStore.setPhrase($event)"
       @sort-by="mainStore.sortProductBy($event)"

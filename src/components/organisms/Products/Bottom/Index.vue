@@ -7,8 +7,8 @@ import { props } from "@/components/organisms/Products/Bottom/props.js";
 defineProps(props);
 </script>
 <template>
-  <div v-bem:organismsProductsBottom>
-    <div v-bem:organismsProductsBottom__limitWrapper>
+  <div class="organismsProductsBottom">
+    <div class="organismsProductsBottom__limitWrapper">
       <AtomsFormsSelect
         @change-limit="$emit('change-limit', $event)"
         default-value="10"

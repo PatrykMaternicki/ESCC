@@ -22,7 +22,7 @@ const increaseCount = (key) => states.counts[key]++;
 const resetCount = (key) => (states.counts[key] = 0);
 const isMoreThan2 = (key) => states.counts[key] > 2;
 const showTriangle = (key) =>
-  states.counts[key] <= 2 && states.counts[key] !== 0 ? "show" : null;
+  states.counts[key] <= 2 && states.counts[key] !== 0 ? "organismsProductsTop__triangleWrapper--show" : null;
 const rotateTriangle = (key) => states.counts[key] === 2;
 const emitSort = (key) => emit("sortBy", { key, value: states.counts[key] });
 
@@ -61,10 +61,10 @@ const doRating = () => {
 </script>
 
 <template>
-  <div v-bem:organismsProductsTop>
-    <h1 v-bem:organismsProductsTop__title>Frontend Challenge </h1>
-    <div v-bem:organismsProductsTop__inputWrapper>
-      <div v-bem:organismsProductsTop__searchWrapper>
+  <div class="organismsProductsTop">
+    <h1 class="organismsProductsTop__title">Frontend Challenge </h1>
+    <div class="organismsProductsTop__inputWrapper">
+      <div class="organismsProductsTop__searchWrapper">
         <AtomsFormsText
           @update:searchbar="$emit('search', $event)"
           label="Search:"
@@ -73,7 +73,7 @@ const doRating = () => {
         />
       </div>
 
-      <div v-bem:organismsProductsTop__categoryWrapper>
+      <div class="organismsProductsTop__categoryWrapper">
         <AtomsFormsSelect
           @change-categories="$emit('change-category', $event)"
           label="Category:"
@@ -83,10 +83,10 @@ const doRating = () => {
         />
       </div>
     </div>
-    <hr v-bem:organismsProductsTop__line />
-    <div v-bem:organismsProductsTop__buttonContainer>
+    <hr class="organismsProductsTop__line" />
+    <div class="organismsProductsTop__buttonContainer">
       <div>
-        <div v-bem:organismsProductsTop__buttonsWrapper>
+        <div class="organismsProductsTop__buttonsWrapper">
           <AtomsButtons
             @clicked="doPrice"
             :force-active="
@@ -95,16 +95,14 @@ const doRating = () => {
             text="price"
           >
             <div
-              v-bem:organismsProductsTop__triangleWrapper="
-                showTriangle('price')
-              "
+            :class="['organismsProductsTop__triangleWrapper', showTriangle('price')]"
             >
               <AtomsIconsTriangle :rotate="rotateTriangle('price')" />
             </div>
           </AtomsButtons>
         </div>
 
-        <div v-bem:organismsProductsTop__buttonsWrapper>
+        <div class="organismsProductsTop__buttonsWrapper">
           <AtomsButtons
             @clicked="doStock"
             :force-active="
@@ -113,16 +111,14 @@ const doRating = () => {
             text="stock"
           >
             <div
-              v-bem:organismsProductsTop__triangleWrapper="
-                showTriangle('stock')
-              "
+              :class="['organismsProductsTop__triangleWrapper', showTriangle('stock')]"
             >
               <AtomsIconsTriangle :rotate="rotateTriangle('stock')" />
             </div>
           </AtomsButtons>
         </div>
 
-        <div v-bem:organismsProductsTop__buttonsWrapper>
+        <div class="organismsProductsTop__buttonsWrapper">
           <AtomsButtons
             @clicked="doRating"
             :force-active="
@@ -131,9 +127,7 @@ const doRating = () => {
             text="rating"
           >
             <div
-              v-bem:organismsProductsTop__triangleWrapper="
-                showTriangle('rating')
-              "
+            :class="['organismsProductsTop__triangleWrapper', showTriangle('rating')]"
             >
               <AtomsIconsTriangle :rotate="rotateTriangle('rating')" />
             </div>
@@ -141,7 +135,7 @@ const doRating = () => {
         </div>
       </div>
       <div>
-        <p v-bem:organismsProductsTop__total>{{ limit }} of {{ total }}</p>
+        <p class="organismsProductsTop__total">{{ limit }} of {{ total }}</p>
       </div>
     </div>
   </div>

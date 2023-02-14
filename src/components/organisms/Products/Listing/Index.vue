@@ -6,7 +6,7 @@ defineProps(props);
 </script>
 
 <template>
-  <div v-bem:organismsProductsListing>
+  <div class="organismsProductsListing">
     <MoleculesCardsWithImage
       v-for="item in products"
       :key="item.id"

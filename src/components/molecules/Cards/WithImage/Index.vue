@@ -17,19 +17,19 @@ const trancated = computed(() => _props.content.substring(0, 40).concat("..."));
 const _props = defineProps(props);
 </script>
 <template>
-  <div v-bem:moleculesCardsWithImage>
+  <div class="moleculesCardsWithImage">
     <AtomsImage :source="source" />
-    <div v-bem:moleculesCardsWithImage__container>
-      <h2 v-bem:moleculesCardsWithImage__title v-if="title">{{ title }}</h2>
-      <p v-bem:moleculesCardsWithImage__content v-if="content">
+    <div class="moleculesCardsWithImage__container">
+      <h2 class="moleculesCardsWithImage__title" v-if="title">{{ title }}</h2>
+      <p class="moleculesCardsWithImage__content" v-if="content">
         {{ trancated }}
       </p>
-      <div v-bem:moleculesCardsWithImage__bottomContainer>
+      <div class="moleculesCardsWithImage__bottomContainer">
         <div>
-          <p v-bem:moleculesCardsWithImage__price v-if="price">
+          <p class="moleculesCardsWithImage__price" v-if="price">
             $ {{ calculateDiscount }}
           </p>
-          <p v-bem:moleculesCardsWithImage__priceUnderline>$ {{ price }}</p>
+          <p class="moleculesCardsWithImage__priceUnderline">$ {{ price }}</p>
         </div>
         <div>
           <AtomsIconsStar

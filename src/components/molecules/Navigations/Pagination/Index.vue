@@ -32,8 +32,8 @@ const pages = () => {
 };
 </script>
 <template>
-  <div v-bem:moleculesNavigationsPagination>
-    <div v-bem:moleculesNavigationsPagination__button>
+  <div class="moleculesNavigationsPagination">
+    <div class="moleculesNavigationsPagination__button">
       <atoms-buttons
         text="<"
         type="outline"
@@ -45,7 +45,7 @@ const pages = () => {
     <div
       v-for="i in pages()"
       :key="i"
-      v-bem:moleculesNavigationsPagination__button
+      class="moleculesNavigationsPagination__button"
     >
       <atoms-buttons
         @click="$emit('change-page', i - 1)"
@@ -55,7 +55,7 @@ const pages = () => {
         :rounded="true"
       />
     </div>
-    <div v-bem:moleculesNavigationsPagination__button>
+    <div class="moleculesNavigationsPagination__button">
       <atoms-buttons
         type="outline"
         text=">"

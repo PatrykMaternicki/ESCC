@@ -16,6 +16,7 @@ export const useMainStore = defineStore("", {
     categories: [],
     sortBy: undefined,
     limit: 10,
+    displayLimit: 0,
     currentPage: 0,
     phrase: "",
     items: [],
@@ -46,6 +47,7 @@ export const useMainStore = defineStore("", {
       );
       const json = await response.json();
       this.items = json.products;
+      this.displayLimit = json.limit;
       this._total = json.total;
     },
 
@@ -56,6 +58,7 @@ export const useMainStore = defineStore("", {
         );
         const json = await response.json();
         this.items = json.products;
+        this.displayLimit = json.limit;
         this._total = json.total;
       }
     },
